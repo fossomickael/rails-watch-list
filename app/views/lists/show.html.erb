@@ -1,13 +1,37 @@
-<h1><%= @list.name %></h1>
+ 
+<div class="banner banner-list">
+  <div class="container text-center ">
+    <h1><strong><%= @list.name %></strong></h1>
 
-</ul>
-<% @list.bookmarks.each do |bookmark| %>
-   <li><%= bookmark.movie.title %><%= link_to "Delete", bookmark_path(bookmark), method: :delete, class: 'link-delete'  %></li>
-<% end %>
-</ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+    <div class="col-4 py-2">  
+    <div class="card-trip">
+        <img src="<%= bookmark.movie.poster_url  %>" />
+        <div class="card-trip-infos">
+            <div>
+            <h2><%= "#{bookmark.movie.title} #{bookmark.movie.rating}" %> <i class="fas fa-star"></i></h2>
+            <p><%= bookmark.movie.overview %></p>
+        </div>
+        <h2 class="card-trip-pricing"><%= link_to "Delete", bookmark_path(bookmark), method: :delete, class: 'link-delete'  %></h2>
+        </div>
+        
+    </div>
+    </div>
+   <% end %>
+</div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-4 ">
 <h1>Add a bookmark</h1>
 <%= simple_form_for([@list, @bookmark]) do |f| %>
      <%= f.input :comment %>
      <%= f.association :movie %>
      <%= f.submit "ajouter", class: 'btn btn-primary w-100' %>
 <% end %>
+</div>
+</div>
