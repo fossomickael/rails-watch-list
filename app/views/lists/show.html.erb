@@ -1,7 +1,13 @@
 <h1><%= @list.name %></h1>
 
+</ul>
+<% @list.bookmarks.each do |bookmark| %>
+   <li><%= bookmark.movie.title %><%= link_to "Delete", bookmark_path(bookmark), method: :delete, class: 'link-delete'  %></li>
+<% end %>
+</ul>
 <h1>Add a bookmark</h1>
 <%= simple_form_for([@list, @bookmark]) do |f| %>
      <%= f.input :comment %>
+     <%= f.association :movie %>
      <%= f.submit "ajouter", class: 'btn btn-primary w-100' %>
 <% end %>
