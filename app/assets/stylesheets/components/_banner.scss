@@ -6,12 +6,10 @@
 }
 
 .banner-index {
-    background-image: url("https://images.unsplash.com/photo-1574267432553-4b4628081c31");
+    background-image: asset-url('banner.jpg');
 }
 
-.banner-list {
-    background-image: url("https://images.unsplash.com/photo-1485846234645-a62644f84728");
-}
+
   .banner h1 {
     margin: 0;
     color: white;
