@@ -14,6 +14,11 @@ class ListsController < ApplicationController
 
   def edit; end
 
+  def update
+    @list.update(list_params)
+    redirect_to list_path(@list)
+  end
+
   def create
     @list = List.new(list_params)
     @list.save
@@ -27,6 +32,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end
